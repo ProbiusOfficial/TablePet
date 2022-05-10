@@ -38,7 +38,6 @@ class MyLabel(QLabel):
 
     # 添加右键菜单
     def rightMenuShow(self, pos):
-        timer_sister = QTimer(self)
         menu = QMenu(self)
         menu.addAction(QAction(QIcon('image/NetWok.png'), '连接到校园网', self, triggered=self.connectNetWork))
         # menu.addAction(QAction(QIcon('image/net.png'), '浏览器', self, triggered=self.net))
