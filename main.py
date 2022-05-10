@@ -182,6 +182,9 @@ class TablePet(QWidget):
         tray.setContextMenu(menu)
         tray.show()
 
+        """ 添加双击显示/隐藏桌面宠物 """
+        tray.activated[QSystemTrayIcon.ActivationReason].connect(self.icon_activated)
+
     def quit(self):
         self.close()
         sys.exit()
@@ -192,6 +195,14 @@ class TablePet(QWidget):
 
     def display(self):
         self.lb_sister.setVisible(True)
+
+    def icon_activated(self, reason):
+        """ 双击显示/隐藏桌面宠物 """
+        if reason == QSystemTrayIcon.DoubleClick:
+            if self.lb_sister.isVisible():
+                self.hide()
+            else:
+                self.display()
 
 
 if __name__ == '__main__':
